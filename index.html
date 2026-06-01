@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="https://d3nvy39jvu7woe.cloudfront.net/static/images/generic/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Best Practices -->
+  <title>The Country Lodge Hotel — Food Service, Menu & Checkout</title>
+  <meta name="description" content="Explore the premium culinary menus of The Country Lodge Hotel. Order from the all-day Eden Menu or the early morning Coffee Shop Menu, with secure checkout powered by Flot Pay.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <!-- Mount point for Svelte app -->
+  <div id="app"></div>
+
+  <!-- Vite module entry script -->
+  <script type="module" src="/src/main.js"></script>
+
+  <!-- Modern Browser Polyfills (Invoker Commands & Dialogue closedby) -->
+  <script type="module">
+    const hasClosedBy = 'closedBy' in HTMLDialogElement.prototype;
+    const hasInvokers = 'commandForElement' in HTMLButtonElement.prototype;
+    const hasPopover = 'popover' in HTMLElement.prototype;
+
+    // Load Popover Polyfill if missing
+    if (!hasPopover) {
+      import('https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover-fn.js').then(({ apply }) => {
+        apply();
+      });
+    }
+
+    // Load Invokers Polyfill if missing
+    if (!hasInvokers) {
+      import('https://cdn.jsdelivr.net/npm/invokers-polyfill@latest/dist/index.min.js')
+        .catch(err => console.error('Invokers polyfill load error:', err));
+    }
+
+    // Fallback for Dialog Backdrop click dismiss if 'closedby' attribute isn't natively supported
+    if (!hasClosedBy) {
+      document.addEventListener('click', (event) => {
+        const dialog = event.target;
+        if (dialog.tagName === 'DIALOG' && dialog.getAttribute('closedby') === 'any') {
+          const rect = dialog.getBoundingClientRect();
+          const isClickInside = (
+            rect.top <= event.clientY &&
+            event.clientY <= rect.top + rect.height &&
+            rect.left <= event.clientX &&
+            event.clientX <= rect.left + rect.width
+          );
+          if (!isClickInside) {
+            dialog.close();
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
