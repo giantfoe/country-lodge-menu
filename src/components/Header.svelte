@@ -31,13 +31,13 @@
     <div 
       class="brand" 
       on:click={() => dispatch('goHome')} 
-      style="cursor: pointer; user-select: none; transition: opacity 0.15s ease;"
+      style="cursor: pointer; user-select: none; transition: opacity 0.15s ease; display: flex; flex-direction: row; align-items: center; gap: 8px;"
       on:mouseenter={(e) => e.currentTarget.style.opacity = "0.7"}
       on:mouseleave={(e) => e.currentTarget.style.opacity = "1"}
       title="Return to Home"
     >
-      <span class="hotel-title">THE COUNTRY LODGE HOTEL</span>
-      <span class="service-subtitle">FOOD SERVICE</span>
+      <img src="/logo.png" alt="Country Lodge Hotel Logo" style="height: 38px; width: auto; object-fit: contain; display: block;" />
+      <span class="service-subtitle" style="font-size: 8px; font-weight: 700; letter-spacing: 2px; color: var(--ink-muted); margin-top: 0; padding-left: 8px; border-left: 1px solid var(--border-strong);">FOOD SERVICE</span>
     </div>
     
     <!-- Time Toggle widget (Native select overlays a custom digital clock widget) -->

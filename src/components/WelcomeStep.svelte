@@ -15,9 +15,9 @@
 </script>
 
 <div class="step-container-transition">
-  <div class="step-title-block text-center" style="margin-bottom: 40px;">
-    <span class="step-number">In-Restaurant Dining</span>
-    <h1 class="step-title" style="margin-bottom: 16px;">Country Lodge Restaurant</h1>
+  <div class="step-title-block text-center" style="margin-bottom: 40px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+    <img src="/logo.png" alt="Country Lodge Hotel Logo" style="height: 100px; width: auto; object-fit: contain; margin-bottom: 4px;" />
+    <span class="step-number" style="margin-bottom: 0;">In-Restaurant Dining</span>
     <p class="step-subtitle">Welcome! Browse the menu directly or start a guided order flow.</p>
   </div>
 
